@@ -11,10 +11,6 @@ def errorResponse(error, code):
 def index():
   return "Welcome to the YTMusic API"
 
-@app.route('/getHome', methods=['GET'])
-def getHomeError():
-  return errorResponse("limit should be an integer", 400)
-
 @app.route('/getHome/<limit>', methods=['GET'])
 def getHome(limit):
   results = ytmusic.get_home(int(limit))
