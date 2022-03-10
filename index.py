@@ -9,7 +9,15 @@ def errorResponse(error, code):
 
 @app.route('/', methods=['GET'])
 def index():
-  results = ytmusic.get_home(5)
+  return "Welcome to the YTMusic API"
+
+@app.route('/getHome', methods=['GET'])
+def getHomeError():
+  return errorResponse("limit should be an integer", 400)
+
+@app.route('/getHome/<limit>', methods=['GET'])
+def getHome(limit):
+  results = ytmusic.get_home(int(limit))
   return jsonify(results)
 
 if __name__ == "__main__":
