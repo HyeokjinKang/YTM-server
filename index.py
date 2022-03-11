@@ -23,7 +23,7 @@ def verify_password(username, password):
 
 @app.route('/', methods=['GET'])
 def index():
-  return "Welcome to the YTMusic API"
+  return {"status": "success", "message": "welcome to YTM-server"}
 
 @app.route('/getHome/<limit>', methods=['GET'])
 @auth.login_required
@@ -94,4 +94,4 @@ def rating(id, rate):
 if __name__ == "__main__":
   # app.run(debug=True)
   from waitress import serve
-  serve(app, host="0.0.0.0", port=5000)
+  serve(app, host="127.0.0.1", port=5000)
