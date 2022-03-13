@@ -25,6 +25,11 @@ def verify_password(username, password):
 def index():
   return {"status": "success", "message": "welcome to YTM-server"}
 
+@app.route('/auth', methods=['GET'])
+@auth.login_required
+def authentication():
+  return {"status": "success", "message": "authentication successful"}
+
 @app.route('/getHome/<limit>', methods=['GET'])
 @auth.login_required
 def getHome(limit):
